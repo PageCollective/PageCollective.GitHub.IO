@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang = 'en' dir = 'ltr'>
+    <head>
+        
+        <meta charset = 'utf-8'>
+        <title> PageCollective </title>
+
+        <script>
+        
+            (() => {
+                
+                /**
+                 *  Redirects for @PageCollective projects,
+                 *  as a measure to prevent broken links in
+                 *  old versions of our apps.
+                 */
+                
+                const Fallback = 'https://github.com/PageCollective'
+                
+                const Topics = {
+                    'Laser-Help' : `https://github.com/PageCollective/Laser/blob/Live/Documentation/Usage.md`   
+                }
+                
+
+                const { search } = document.location
+                
+                const parameters = new URLSearchParams(search)
+
+                
+                const topic = parameters
+                    .get('Topic')
+                
+                const url = Topics[ topic ] ?? Fallback
+
+                
+                const { location } = window
+                
+                location.replace(url)
+                
+            })()
+            
+        </script>
+    </head>
+</html>
